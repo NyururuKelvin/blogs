@@ -5,14 +5,15 @@ class Config:
 
 
 class ProdConfig(Config):
-    pass
+  pass
 
 class TestConfig(Config):
-  pass
+  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:nyururu@localhost/blogs_test'
 
 
 class DevConfig(Config):
-    DEBUG = True
+  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:nyururu@localhost/blogs'
+  DEBUG = True
 
 config_options = {
 'development':DevConfig,
