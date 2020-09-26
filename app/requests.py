@@ -2,7 +2,7 @@
 import urllib.request,json
 # base_url = None
 
-def get_quotes():
+def get_blog():
     get_quotes_url = 'http://quotes.stormconsultancy.co.uk/random.json'
 
     with urllib.request.urlopen(get_quotes_url) as url:
