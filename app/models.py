@@ -31,3 +31,10 @@ class User(UserMixin,db.Model):
 
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)
+
+class Blog:
+    def __init__(self, id, author, quote, permalink):
+        self.id = id
+        self.author = author
+        self.quote = quote
+        self.permalink = permalink
