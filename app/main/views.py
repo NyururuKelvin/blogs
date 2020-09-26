@@ -9,4 +9,4 @@ def index():
 
     title = 'Blogs Site'
   
-    return render_template('index.html', title = title)
+    return render_template('index.html',title = title)
