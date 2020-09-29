@@ -17,7 +17,11 @@ class User(UserMixin,db.Model):
     username=db.Column(db.String(255),unique=True,nullable=False)
     email = db.Column(db.String(255),unique = True,index = True)
     password_hash=db.Column(db.String(255))
+    bio=db.Column(db.String(255))
+    profile_pic_path = db.Column(db.String())
+    comments=db.relationship('Comment',backref='user',lazy='dynamic')
     post = db.relationship('Post', backref = 'user', lazy = 'dynamic')
+
 
     password_secure = db.Column(db.String(255))
 
