@@ -5,6 +5,7 @@ from flask_login import UserMixin
 from . import login_manager
 from sqlalchemy import Enum
 import arrow
+import pytz
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -62,6 +63,8 @@ class Post(db.Model):
     def get_posta(cls,owner_id):
         posts = Post.query.filter_by(owner_id=owner_id).all()
         return posts  
+date_time=datetime.utcnow().replace(tzinfo=pytz.UTC)
+time_zone=date_time.astimezone(pytz.timezone('Africa/Nairobi'))
 
 class Comment(db.Model):
     __tablename__='comments'
@@ -83,9 +86,15 @@ class Comment(db.Model):
         Comment = Comment.query.filter_by(post_id=post_id).all()
         return Comment 
 
+date_time=datetime.utcnow().replace(tzinfo=pytz.UTC)
+time_zone=date_time.astimezone(pytz.timezone('Africa/Nairobi'))
+
 class Blog:
     def __init__(self, id, author, quote, permalink):
         self.id = id
         self.author = author
         self.quote = quote
         self.permalink = permalink
+
+date_time=datetime.utcnow().replace(tzinfo=pytz.UTC)
+time_zone=date_time.astimezone(pytz.timezone('Africa/Nairobi'))

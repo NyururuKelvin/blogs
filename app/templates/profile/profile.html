@@ -13,7 +13,7 @@ PROFILE
         <div class="col-md-4 content-section" style= "float:left;padding: 1%;border-radius: 5%; font-size: large;">
 
           {% if user.profile_pic_path %}
-          <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail img-circle img-respons img-thumbnail">
+          <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt=""  class="img-circle img-responsive" alt="" class="img-thumbnail" style="width: 250px; height: 250px;">
           {%else%}
           <p>No profile picture</p>
           
