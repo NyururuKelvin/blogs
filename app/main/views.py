@@ -1,9 +1,8 @@
 import os
 from flask import render_template,request,redirect,url_for, abort, flash
 from . import main
-from ..models import User, Post
 from flask_login import login_required, current_user
-from .. import db
+from .. import db,photos
 from flask_login import login_user,logout_user,login_required
 from werkzeug.security import generate_password_hash
 from .forms import UpdateProfile,PostForm,CommentsForm
@@ -23,9 +22,8 @@ def profile(uname):
     user = User.query.filter_by(username = uname).first()
     # form = PostForm()
 
-    if not user.is_authenticated:
-        flash('please login', 'danger')
-        return redirect(url_for('main.login'))
+    if user is None:
+        abort(404)
     
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=uname).first()
@@ -33,6 +31,26 @@ def profile(uname):
      
 
     return render_template("profile/profile.html", user = user, posts=posts )
+
+@main.route('/user/<uname>/update',methods = ['GET','POST'])
+@login_required
+def update_profile(uname):
+    user = User.query.filter_by(username = uname).first()
+    
+    if user is None:
+        abort(404)
+
+    form = UpdateProfile()
+
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for('.profile',uname=user.username))
+
+    return render_template('profile/update.html',form =form)
 
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
