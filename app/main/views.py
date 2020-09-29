@@ -8,15 +8,15 @@ from flask_login import login_user,logout_user,login_required
 from werkzeug.security import generate_password_hash
 from .forms import UpdateProfile
 from ..models import *
-from ..requests import get_quotes
+from ..requests import get_blogs
 
 
 @main.route('/')
 def index():
-    quotes = get_quotes()
+    blogs = get_blogs()
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.date.desc()).paginate(page=page, per_page=8)
-    return render_template('index.html', posts=posts ,quotes=quotes)
+    return render_template('index.html', posts=posts ,blogs=blogs)
 
 @main.route('/user/<uname>', methods=['GET', 'POST'])
 def profile(uname):

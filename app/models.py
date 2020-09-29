@@ -3,6 +3,8 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
+from sqlalchemy import Enum
+import arrow
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -32,6 +34,9 @@ class User(UserMixin,db.Model):
 
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)
+
+choices = ['product', 'interview', 'promotion']
+category_enum = Enum(*choices, name='category_enum')
 
 class Post(db.Model):
     

@@ -2,11 +2,11 @@
 import urllib.request,json
 # base_url = None
 
-def get_blog():
-    get_quotes_url = 'http://quotes.stormconsultancy.co.uk/random.json'
+def get_blogs():
+    get_blogs_url = 'http://quotes.stormconsultancy.co.uk/random.json'
 
-    with urllib.request.urlopen(get_quotes_url) as url:
+    with urllib.request.urlopen(get_blogs_url) as url:
         quotes = url.read()
-        get_quotes_response = json.loads(quotes)
+        get_blogs_response = json.loads(quotes)
         
-    return get_quotes_response
+    return get_blogs_response

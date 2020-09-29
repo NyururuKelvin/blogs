@@ -9,7 +9,7 @@
             <div class="card col-md-5" style="border: 1px solid white;background-color: white; padding: 10px;margin: 2%;">
                 <div class="card-header">Topic: {{ item.topic}}</div>
                 <div class="card-body">{{ item.description}}</div>
-                <div class="card-footer">Posted: {{item.date | timeago }}</div>
+                <div class="card-footer">Posted: {{item.date}}</div>
                 <div class="card-footer"><a class="btn" style="color:white; font-size: large;" href="{{url_for('main.comment', pname = item.id)}}"><strong>Comment</strong></a></div>
             </div>       
           {% endfor %}
