@@ -1,4 +1,4 @@
 instance/
 *.pyc
-start.sh
+*.start.sh
 virtual/

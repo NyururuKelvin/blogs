@@ -10,9 +10,14 @@ class Config:
   MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
   MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
+  UPLOADED_PHOTOS_DEST ='app/static/images'
+
+  ''' Api set up '''
+  BLOG_API ='GET http://quotes.stormconsultancy.co.uk/random.json'
+
 
 class ProdConfig(Config):
-  pass
+  SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 class TestConfig(Config):
   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:nyururu@localhost/blogs_test'
