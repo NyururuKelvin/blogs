@@ -45,7 +45,7 @@ PROFILE
                 <div class="panel-body" style="font-size: large;">
                     <div style="color: black; padding: 3px;"><strong style="color: cyan;">Topic:</strong>{{ item.topic}}</div>
                     <div>{{ item.description | capitalize }}</div>
-                    <div style="color: black;padding: 3px;"><strong style="color: cyan;">Posted: </strong> {{item.date | timeago }}</div>
+                    <div style="color: black;padding: 3px;"><strong style="color: cyan;">Posted: </strong> {{item.date }}</div>
                     <div class="like" style="padding-top: 10px;">
                         <p ></a> {{item.downvotes}} <a class="btn btn-info" style="font-size: large;" href="{{url_for('main.comment', pname = item.id)}}"><strong>Comment</strong></a>
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button></p>
